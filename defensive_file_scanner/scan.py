@@ -6,7 +6,6 @@ from pathlib import Path
 from pathlib import PurePath
 
 import click
-from icecream import ic
 from loguru import logger
 
 
@@ -18,6 +17,7 @@ from loguru import logger
 )
 def main(file: Path):
     malware = Malware(file)
+    logger.info(malware)
 
 
 class Malware:
@@ -32,33 +32,34 @@ class Malware:
         Args:
             file (PurePath | str): Path of the file to scan.
         """
-        self.file: PurePath = file
-        self.counter = Counter()
-        logger.info(f'Initiating Scan of file: {file}')
+        self.file: PurePath = Path(file)
+        self.counter: Counter = Counter()
+        logger.info(f"Initiating Scan of file: {file}")
         logger.debug(repr(self))
 
     def __str__(self):
         return f"file='{self.file}'"
 
     def __repr__(self):
-        return f'{type(self).__name__}({str(self)})'
+        return f"{type(self).__name__}({str(self)})"
 
     def test_whole_file(self) -> list[tuple[str, int]]:
         """
         Scans the whole file and counts the hexbits.
 
         Returns:
-            The count of the hex in the byte code ordered from most to least common.
+            The count of the hex in the byte code ordered from most
+            to least common.
 
         Todo:
             - [ ] Add tqdm loading bar.
         """
-        with open(self.file, 'rb', buffering=1024) as f:
+        with open(self.file, "rb", buffering=1024) as f:
             while True:
                 if not (line := f.read(100)):
                     break
                 self.counter.update(line)
-        logger.success(f'Most common bit: {self.counter.most_common(1)[0]}')
+        logger.success(f"Most common bit: {self.counter.most_common(1)[0]}")
         return self.counter.most_common()
 
     @property
@@ -86,10 +87,10 @@ class Malware:
 
     @property
     def file_hash(self) -> str:
-        ...
+        raise NotImplementedError
 
     def sum_of_bit(self) -> int:
-        ...
+        raise NotImplementedError
 
 
 if __name__ == "__main__":

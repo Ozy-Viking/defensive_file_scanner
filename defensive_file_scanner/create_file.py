@@ -18,14 +18,19 @@ import click
 from loguru import logger
 
 
-def repeat_function(func: Callable[[...], ...], *args: Any, repeats: int = 1_000, **kwargs: Any) -> Generator:
+def repeat_function(
+    func: Callable[..., Any],
+    *args: Any,
+    repeats: int = 1_000,
+    **kwargs: Any,
+) -> Generator:
     """
     Run a function n times with given argument and keyword arguments.
 
     Args:
         func (Callable[[...], ...]): Function to run.
         *args (Any): Positional arguments for the function.
-        repeats (int): Number of times to repeat the function call. Default = 1,000.
+        repeats (int): Number of times to repeat the function call.
         **kwargs (Any): Keyword arguments for the function.
 
     Returns:
@@ -48,15 +53,21 @@ def random_bytes(length: int = 1000) -> bytes:
     Returns:
         bytes: A byte string of hex digits of a given length.
     """
-    program = "".join(repeat_function(random.choice, string.hexdigits, repeats=length))
+    program = "".join(
+        repeat_function(
+            random.choice,
+            string.hexdigits,
+            repeats=length,
+        )
+    )
     return b"".fromhex(program)
 
 
 def write_file(
-        path: Path,
-        program_start: int = 100_000,
-        bloat: int = 100_000,
-        program_end: int = 0,
+    path: Path,
+    program_start: int = 100_000,
+    bloat: int = 100_000,
+    program_end: int = 0,
 ) -> None:
     """
     Writes the hex code for a test file.
@@ -93,19 +104,21 @@ def write_file(
     "-s",
     "--start",
     default=1_000,
-    help="Number of hex digits in the simulated program at the start of file. Default = 1,000",
+    help="Number of hex digits in the simulated program at the start of file.",
 )
 @click.option(
     "-b",
     "--bloat",
     default=1_000,
-    help="Number of bloat hex digits or '\x00' (which would be 2) in the file. Default = 1,000",
+    help=(  # fmt: off
+        "Number of bloat hex digits or '\x00' (which would be 2) in the file."
+    ),  # fmt: on
 )
 @click.option(
     "-e",
     "--end",
     default=0,
-    help="Number of hex digits in the simulated program at the end of file. Default = 0",
+    help="Number of hex digits in the simulated program at the end of file.",
 )
 def main(filepath: Path, start: int = 1_000, bloat: int = 1_000, end: int = 0):
     """
@@ -118,7 +131,7 @@ def main(filepath: Path, start: int = 1_000, bloat: int = 1_000, end: int = 0):
         size_str = f"{size:,.2f} B"
     elif size < (1_000 * 1024):
         size_str = f"{size / 1024:,.2f} KB"
-    elif size < (1_000 * 1024 ** 2):
+    elif size < (1_000 * 1024**2):
         size_str = f"{size / 1024 ** 2:,.2f} MB"
     else:
         size_str = f"{size / 1024 ** 3:,.2f} GB"

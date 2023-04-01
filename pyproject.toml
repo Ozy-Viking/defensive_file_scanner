@@ -43,7 +43,7 @@ create_file = "defensive_file_scanner/create_file:main"
 
 [tool.mypy]
 mypy_path = '$MYPY_CONFIG_FILE_DIR'
-files = '$MYPY_CONFIG_FILE_DIR/template_package'
+files = '$MYPY_CONFIG_FILE_DIR/defensive_file_scanner'
 explicit_package_bases = false
 ignore_missing_imports = true
 exclude = [

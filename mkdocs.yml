@@ -36,13 +36,13 @@ theme:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
 
-#repo_name: Ozy-Viking/template
-#repo_url: https://github.com/Ozy-Viking/template
-#edit_uri: edit/main/docs/
+repo_name: Ozy-Viking/defensive_file_scanner
+repo_url: https://github.com/Ozy-Viking/defensive_file_scanner
+edit_uri: edit/main/docs/
 
 markdown_extensions:
   - admonition
-  #  - codehilite
+  - codehilite
   - toc:
       permalink: '#'
   - pymdownx.tasklist:
@@ -52,8 +52,8 @@ markdown_extensions:
   - footnotes
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      - emoji_index: !!python/name:materialx.emoji.twemoji
+      - emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
@@ -80,14 +80,12 @@ extra:
       - development
 plugins:
   - git-revision-date-localized:
-      enable_creation_date: true
-      enabled: !ENV [ CI, false ]
+      - enable_creation_date: true
+      - enabled: !ENV [ CI, false ]
   - search:
   - tags
   - autorefs
   - mkdocstrings
-  - mike:
-      canonical_version: latest
 
 extra_css:
   - static/custom.css
