@@ -38,8 +38,8 @@ pytest-cov = "^4.0.0"
 docs = ['mkdocs', 'mkdocs-autorefs', 'mkdocs-git-revision-date-localized-plugin', 'mkdocs-material', 'mkdocstrings', 'mkdocstrings-python', 'pymdown-extensions', 'mike']
 
 [tool.poetry.scripts]
-scan = "defensive_file_scanner/scan:main"
-create_file = "defensive_file_scanner/create_file:main"
+scan = "defensive_file_scanner.scan:main"
+create_file = "defensive_file_scanner.create_file:main"
 
 [tool.mypy]
 mypy_path = '$MYPY_CONFIG_FILE_DIR'

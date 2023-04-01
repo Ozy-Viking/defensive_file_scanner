@@ -1,7 +1,5 @@
 """
 Generate a test file with dummy bytes and optional bloat to simulate malware.
-
-Author: Zack Hankin <zth440@uowmail.edu.au>
 """
 # !/bin/python3.11
 from __future__ import annotations
