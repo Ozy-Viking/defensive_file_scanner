@@ -52,8 +52,8 @@ markdown_extensions:
   - footnotes
   - attr_list
   - pymdownx.emoji:
-      - emoji_index: !!python/name:materialx.emoji.twemoji
-      - emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
@@ -80,8 +80,8 @@ extra:
       - development
 plugins:
   - git-revision-date-localized:
-      - enable_creation_date: true
-      - enabled: !ENV [ CI, false ]
+      enable_creation_date: true
+      enabled: !ENV [ CI, false ]
   - search:
   - tags
   - autorefs
@@ -90,10 +90,10 @@ plugins:
 extra_css:
   - static/custom.css
 
-nav:
-  - "Home": index.md
-  - "Readme": the_readme.md
-  - "Reference": Reference.md
+#nav:
+#  - "Home": index.md
+#  - "Readme": the_readme.md
+#  - "Reference": Reference.md
 
 use_directory_urls: true
 watch:
