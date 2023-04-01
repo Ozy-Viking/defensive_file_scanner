@@ -1,0 +1,7 @@
+[data-md-color-scheme=slate] {
+    --md-code-bg-color: #2e303d;
+}
+
+:root, [data-md-color-scheme=default] {
+    --md-code-bg-color: #ffffff;
+}

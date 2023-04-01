@@ -13,6 +13,17 @@ loguru = "^0.6.0"
 tqdm = "^4.65.0"
 click = "^8.1.3"
 
+# Documentation install
+mkdocs = { version = "^1.4.2", optional = true }
+mkdocs-autorefs = { version = "^0.4.1", optional = true }
+mkdocs-git-revision-date-localized-plugin = { version = "^1.2.0", optional = true }
+mkdocs-material = { version = "^9.1.2", optional = true }
+mkdocstrings = { version = "^0.20.0", optional = true }
+mkdocstrings-python = { version = "^0.8.3", optional = true }
+pymdown-extensions = { version = "^9.10", optional = true }
+mike = { version = "^1.1.2", optional = true }
+pytest = "^7.2.2"
+
 [tool.poetry.group.dev]
 optional = true
 
@@ -22,6 +33,22 @@ mypy = "^1.1.1"
 flake8 = "^6.0.0"
 black = "^23.1.0"
 pytest-cov = "^4.0.0"
+
+[tool.poetry.extras]
+docs = ['mkdocs', 'mkdocs-autorefs', 'mkdocs-git-revision-date-localized-plugin', 'mkdocs-material', 'mkdocstrings', 'mkdocstrings-python', 'pymdown-extensions', 'mike']
+
+[tool.poetry.scripts]
+scan = "defensive_file_scanner/scan:main"
+create_file = "defensive_file_scanner/create_file:main"
+
+[tool.mypy]
+mypy_path = '$MYPY_CONFIG_FILE_DIR'
+files = '$MYPY_CONFIG_FILE_DIR/template_package'
+explicit_package_bases = false
+ignore_missing_imports = true
+exclude = [
+    "docs/",
+]
 
 [build-system]
 requires = ["poetry-core"]

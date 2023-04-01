@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="PackageRequirementsSettings">
-    <option name="requirementsPath" value="$MODULE_DIR$/pyproject.toml" />
-    <option name="versionSpecifier" value="Greater or equal (&gt;=x.y.z)" />
-  </component>
   <component name="PyDocumentationSettings">
-    <option name="format" value="GOOGLE" />
-    <option name="myDocStringFormat" value="Google" />
-    <option name="renderExternalDocumentation" value="true" />
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="py.test" />

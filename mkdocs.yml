@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: Defensive File Scanner
+
+theme:
+  name: material
+  favicon: img/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+
+#repo_name: Ozy-Viking/template
+#repo_url: https://github.com/Ozy-Viking/template
+#edit_uri: edit/main/docs/
+
+markdown_extensions:
+  - admonition
+  #  - codehilite
+  - toc:
+      permalink: '#'
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - attr_list
+  - footnotes
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+copyright: Copyright &copy; 2023 Zack Hankin
+
+extra:
+  version:
+    provider: mike
+    default:
+      - stable
+      - development
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+      enabled: !ENV [ CI, false ]
+  - search:
+  - tags
+  - autorefs
+  - mkdocstrings
+  - mike:
+      canonical_version: latest
+
+extra_css:
+  - static/custom.css
+
+nav:
+  - "Home": index.md
+  - "Readme": the_readme.md
+  - "Reference": Reference.md
+
+use_directory_urls: true
+watch:
+  - defensive_file_scanner

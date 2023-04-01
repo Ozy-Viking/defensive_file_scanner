@@ -10,21 +10,23 @@ import os
 import random
 import string
 from pathlib import Path
+from typing import Any
+from typing import Callable
 from typing import Generator
 
 import click
 from loguru import logger
 
 
-def repeat_function(func, *args, repeats: int = 1_000, **kwargs) -> Generator:
+def repeat_function(func: Callable[[...], ...], *args: Any, repeats: int = 1_000, **kwargs: Any) -> Generator:
     """
     Run a function n times with given argument and keyword arguments.
 
     Args:
-        func: Function to run.
-        *args: Positional arguments for the function.
-        repeats: Number of times to repeat the function call. Default = 1,000.
-        **kwargs: Keyword arguments for the function.
+        func (Callable[[...], ...]): Function to run.
+        *args (Any): Positional arguments for the function.
+        repeats (int): Number of times to repeat the function call. Default = 1,000.
+        **kwargs (Any): Keyword arguments for the function.
 
     Returns:
         Generator: With for the function to be called n number of times.
@@ -51,10 +53,10 @@ def random_bytes(length: int = 1000) -> bytes:
 
 
 def write_file(
-    path: Path,
-    program_start: int = 100_000,
-    bloat: int = 100_000,
-    program_end: int = 0,
+        path: Path,
+        program_start: int = 100_000,
+        bloat: int = 100_000,
+        program_end: int = 0,
 ) -> None:
     """
     Writes the hex code for a test file.
@@ -66,7 +68,7 @@ def write_file(
         program_end (int): Length of the "program" code at end of file.
 
     Returns:
-
+        None
     """
     with open(path, "wb") as f:
         program: bytes = b""
@@ -116,7 +118,7 @@ def main(filepath: Path, start: int = 1_000, bloat: int = 1_000, end: int = 0):
         size_str = f"{size:,.2f} B"
     elif size < (1_000 * 1024):
         size_str = f"{size / 1024:,.2f} KB"
-    elif size < (1_000 * 1024**2):
+    elif size < (1_000 * 1024 ** 2):
         size_str = f"{size / 1024 ** 2:,.2f} MB"
     else:
         size_str = f"{size / 1024 ** 3:,.2f} GB"
