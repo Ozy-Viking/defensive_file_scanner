@@ -90,10 +90,10 @@ plugins:
 extra_css:
   - static/custom.css
 
-#nav:
-#  - "Home": index.md
-#  - "Readme": the_readme.md
-#  - "Reference": Reference.md
+nav:
+  - "Home": index.md
+  - "Readme": the_readme.md
+  - "Reference": Reference.md
 
 use_directory_urls: true
 watch:
