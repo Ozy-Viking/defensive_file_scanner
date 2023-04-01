@@ -1,0 +1,3 @@
+[data-md-color-scheme=slate] {
+    --md-code-bg-color: hsla(var(--md-hue),15%,15%,0.5);
+}
