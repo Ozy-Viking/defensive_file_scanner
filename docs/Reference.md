@@ -7,7 +7,7 @@
       show_root_heading: false
       show_source: true
       heading_level: 3
-            
+
 
 ## defensive_file_scanner.scan
 ::: defensive_file_scanner.scan
