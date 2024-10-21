@@ -8,8 +8,7 @@ from .scan import main as scan
 
 
 @click.group(commands={"create": create})
-def main():
-    ...
+def main(): ...
 
 
 main.add_command(scan)
